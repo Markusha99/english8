@@ -1,0 +1,760 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>English 8 Revision Trainer</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Onest:wght@400;500;600;700&family=Sofia+Sans+Condensed:wght@600;800&display=swap">
+<style>
+/* Layout: a lesson contents sheet (vocabulary | grammar) leads to one exercise per screen, like a page on the board. */
+:root{
+  --bg:#eaeff5; --surface:#ffffff; --ink:#14233b; --muted:#55647c; --line:#cbd5e1;
+  --accent:#1d5bd8; --on-accent:#ffffff; --accent-soft:#e2ebfd;
+  --mark:#ffe169; --on-mark:#2a2200;
+  --ok:#136f3d; --ok-bg:#dbf1e3; --bad:#b92d25; --bad-bg:#fbe1de;
+  --display:'Sofia Sans Condensed','Arial Narrow','Roboto Condensed',sans-serif;
+  --body:'Onest','Segoe UI',system-ui,sans-serif;
+  --hand:'Caveat','Segoe Print','Comic Sans MS',cursive;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141f1b; --surface:#1d2c26; --ink:#eef3ec; --muted:#a6b7ac; --line:#3b5046;
+    --accent:#9cc8ff; --on-accent:#0c1f38; --accent-soft:#243d48;
+    --mark:#f3d56b; --on-mark:#2a2200;
+    --ok:#86e0a4; --ok-bg:#1c452f; --bad:#ffa698; --bad-bg:#552725;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141f1b; --surface:#1d2c26; --ink:#eef3ec; --muted:#a6b7ac; --line:#3b5046;
+  --accent:#9cc8ff; --on-accent:#0c1f38; --accent-soft:#243d48;
+  --mark:#f3d56b; --on-mark:#2a2200;
+  --ok:#86e0a4; --ok-bg:#1c452f; --bad:#ffa698; --bad-bg:#552725;
+  color-scheme:dark;
+}
+html{font-size:18px}
+*,*::before,*::after{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 1rem/1.5 var(--body);-webkit-text-size-adjust:100%}
+.wrap{max-width:76rem;margin-inline:auto;padding-inline:clamp(16px,3vw,40px);padding-block:1.25rem 2.5rem;display:flex;flex-direction:column;gap:1.25rem}
+h1,h2,h3,h4,p,ol{margin:0}
+ol{padding:0;list-style:none}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+/* top */
+.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:.75rem 1.5rem}
+.eyebrow{font:600 .8rem/1.2 var(--body);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+h1{font:800 2.3rem/1 var(--display);text-transform:uppercase;letter-spacing:.01em;text-wrap:balance}
+.tools{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.btn{min-height:2.75rem;padding:.45em 1em;border:2px solid var(--line);border-radius:.55rem;background:var(--surface);font-weight:600;cursor:pointer}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn.quiet{background:transparent}
+.btn.sq{min-width:2.75rem;padding-inline:.5em}
+.btn:disabled{opacity:.45;cursor:default}
+.tabs{display:flex;flex-wrap:wrap;gap:.5rem;width:100%}
+.tab{flex:1 1 13rem;min-width:0;text-align:left;padding:.6rem .9rem;border:2px solid var(--line);border-radius:.55rem;background:var(--surface);cursor:pointer;display:flex;flex-direction:column;gap:.1rem}
+.tab small{font:600 .75rem/1.2 var(--body);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.tab b{font:800 1.35rem/1.1 var(--display);text-transform:uppercase}
+.tab[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:var(--surface)}
+.tab[aria-selected="true"] small{color:var(--surface);opacity:.75}
+
+/* board */
+.board{background:var(--surface);border:2px solid var(--ink);border-radius:.9rem;padding:clamp(1rem,2.5vw,2rem);display:flex;flex-direction:column;gap:1.25rem;min-width:0}
+.lesson-head{display:flex;flex-direction:column;gap:.3rem}
+.lesson-head h2{font:800 2.6rem/1 var(--display);text-transform:uppercase;text-wrap:balance}
+.sub{color:var(--muted);max-width:65ch}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(21rem,100%),1fr));gap:1.5rem 2.5rem}
+.cols h3{font:800 1.25rem/1.1 var(--display);text-transform:uppercase;letter-spacing:.05em;padding-bottom:.4rem;border-bottom:2px solid var(--ink);margin-bottom:.4rem}
+.toc{display:flex;flex-direction:column}
+.toc button{width:100%;display:grid;grid-template-columns:2.2rem minmax(0,1fr) auto;align-items:baseline;gap:.25rem .6rem;text-align:left;padding:.65rem .25rem;background:none;border:0;border-bottom:1px solid var(--line);cursor:pointer;min-height:3rem}
+.toc button:hover .tt{text-decoration:underline}
+.toc .n{font:800 1.3rem/1 var(--display);color:var(--accent);font-variant-numeric:tabular-nums}
+.toc .tt{font-weight:600}
+.toc .ty{display:block;font-size:.8rem;color:var(--muted);font-weight:400}
+.toc .sc{font:700 1.45rem/1 var(--hand);color:var(--muted);white-space:nowrap}
+.toc .sc.full{color:var(--ok)}
+
+/* exercise frame */
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem}
+.crumbs .pos{font:600 .9rem/1.2 var(--body);color:var(--muted)}
+.meta{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.tag{font:700 .75rem/1 var(--body);letter-spacing:.09em;text-transform:uppercase;padding:.4em .7em;border-radius:99px;background:var(--accent-soft);color:var(--ink)}
+.tag.grammar{background:transparent;box-shadow:inset 0 0 0 2px var(--line)}
+.ref{font-size:.85rem;color:var(--muted)}
+.exhead{display:flex;flex-direction:column;gap:.45rem}
+.exhead h2{font:800 2.2rem/1.02 var(--display);text-transform:uppercase;text-wrap:balance}
+.task{font-size:1.15rem;font-weight:500;max-width:65ch}
+.how{font-size:.9rem;color:var(--muted)}
+.exbody{min-width:0}
+.exfoot{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;padding-top:1rem;border-top:1px solid var(--line)}
+.score{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem .75rem;margin-left:auto}
+.score b{font:700 2.3rem/1 var(--hand);color:var(--accent);white-space:nowrap}
+.score.full b{color:var(--ok)}
+.score span{font-size:.9rem;color:var(--muted)}
+.lockbox{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;padding:.9rem;border:2px dashed var(--line);border-radius:.55rem}
+.lockbox label{font-weight:600}
+.lockbox input{min-height:2.75rem;padding:.3em .7em;border:2px solid var(--line);border-radius:.55rem;background:var(--surface);width:11rem;max-width:100%;-webkit-text-security:disc}
+.lockbox .err{color:var(--bad);font-size:.9rem;flex-basis:100%}
+.pager{display:flex;justify-content:space-between;gap:.6rem}
+
+/* shared interactive pieces */
+.chip,.opt,.w{min-height:2.75rem;padding:.4em .8em;border:2px solid var(--line);border-radius:.55rem;background:var(--surface);font-weight:600;cursor:pointer;display:inline-block;text-align:center}
+.chip.sel,.opt.sel,.w.sel,.slot.sel{background:var(--mark);border-color:var(--on-mark);color:var(--on-mark)}
+.chip.ok,.opt.ok,.slot.ok,.gap.ok{background:var(--ok-bg);border-color:var(--ok);color:var(--ink)}
+.chip.bad,.opt.bad,.slot.bad,.gap.bad{background:var(--bad-bg);border-color:var(--bad);color:var(--ink)}
+.chip.ok::after,.opt.ok::after,.slot.ok::after{content:" ✓";color:var(--ok)}
+.chip.bad::after,.opt.bad::after,.slot.bad::after{content:" ✗";color:var(--bad)}
+.items{display:flex;flex-direction:column;gap:1.1rem;counter-reset:it}
+.item{counter-increment:it;display:grid;grid-template-columns:1.9rem minmax(0,1fr);gap:.2rem .4rem}
+.item::before{content:counter(it) ".";font:800 1.3rem/1.5 var(--display);color:var(--muted);font-variant-numeric:tabular-nums}
+.item>*{grid-column:2;min-width:0}
+.q{font-size:1.15rem;line-height:1.9}
+.opts{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-top:.4rem}
+.blank{display:inline-block;min-width:4.5rem;border-bottom:3px solid var(--ink);text-align:center;font-weight:700;color:var(--accent);padding-inline:.3rem;line-height:1.3}
+.blank:empty::before{content:"\00a0"}
+
+/* quiz */
+.quiz{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(25rem,100%),1fr));gap:1.3rem 2.5rem}
+.quiz.clocks .item{grid-template-columns:1.9rem 6.5rem minmax(0,1fr);align-items:center;column-gap:.7rem}
+.quiz.clocks .item>.clock{grid-column:2}
+.quiz.clocks .item>.main{grid-column:3}
+.quiz.clocks .opts{flex-direction:column;align-items:stretch}
+.clock svg{display:block;width:100%;height:auto}
+.clock .face{fill:var(--surface);stroke:var(--ink);stroke-width:3}
+.clock .tick{stroke:var(--ink);stroke-width:1.5;fill:none}
+.clock .tick.big{stroke-width:3}
+.clock text{fill:var(--ink);font:800 11px var(--display);text-anchor:middle;dominant-baseline:central}
+.clock .hh{stroke:var(--ink);stroke-width:5;stroke-linecap:round;fill:none}
+.clock .mh{stroke:var(--accent);stroke-width:3.2;stroke-linecap:round;fill:none}
+.clock .pin{fill:var(--ink)}
+
+/* pool, bins, slots */
+.pool{display:flex;flex-wrap:wrap;gap:.5rem;padding:.7rem;border:2px dashed var(--line);border-radius:.55rem;min-height:4.3rem;position:sticky;top:env(safe-area-inset-top,0px);background:var(--surface);z-index:2;margin-bottom:1rem;max-height:34vh;overflow-y:auto}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(10rem,100%),1fr));gap:.75rem}
+.bin{border:2px solid var(--ink);border-radius:.55rem;min-height:9rem;cursor:pointer;display:flex;flex-direction:column;min-width:0}
+.bin h4{font:800 1.3rem/1.1 var(--display);text-transform:uppercase;letter-spacing:.03em;padding:.5rem .7rem;border-bottom:2px solid var(--ink);text-align:center}
+.bin .list{display:flex;flex-wrap:wrap;gap:.4rem;padding:.6rem;align-content:flex-start;flex:1}
+.rows{display:flex;flex-direction:column;gap:.5rem;font-size:1.15rem;line-height:2.5}
+.rows.match{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(24rem,100%),1fr));gap:.6rem 2.5rem;line-height:1.35}
+.rows.match .row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:.75rem;padding-block:.3rem;border-bottom:1px solid var(--line)}
+.sp{font-weight:700;color:var(--muted)}
+.slot{min-width:8.5rem;min-height:2.6rem;padding:.25em .7em;border:2px dashed var(--muted);border-radius:.55rem;background:transparent;font-weight:700;cursor:pointer;vertical-align:middle;line-height:1.3}
+.slot.filled{border-style:solid;border-color:var(--accent);background:var(--accent-soft)}
+
+/* typed */
+.gap{min-height:2.6rem;padding:.2em .6em;border:2px solid var(--muted);border-radius:.55rem;background:var(--surface);font-weight:700;max-width:100%;vertical-align:middle;margin-inline:.15em}
+.hint{color:var(--muted);font-style:italic}
+.gm{font-weight:700;margin-right:.2em}
+.gm.ok{color:var(--ok)} .gm.bad{color:var(--bad)}
+
+/* order */
+.build{display:flex;align-items:center;gap:.4rem;min-width:0}
+.line{flex:1;min-width:0;display:flex;flex-wrap:wrap;gap:.4rem;min-height:3.5rem;padding:.35rem;border-bottom:3px solid var(--ink);align-items:center}
+.line:not(.plain) .chip:first-child::first-letter{text-transform:uppercase}
+.end{font:800 1.6rem/1 var(--display);min-width:1.8rem}
+.tray{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem;min-height:2.75rem}
+.lbl{font-size:.9rem;color:var(--muted);font-weight:600}
+.item.ok .build::after,.item.ok .sent::after{content:"✓";color:var(--ok);font-weight:700;margin-left:.3rem}
+.item.bad .build::after,.item.bad .sent::after{content:"✗";color:var(--bad);font-weight:700;margin-left:.3rem}
+.item.ok .line{border-color:var(--ok)} .item.bad .line{border-color:var(--bad)}
+
+/* fix */
+.sent{font-size:1.15rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem .1rem}
+.w{padding-inline:.35em;border-color:transparent;font-weight:500;font-size:inherit}
+.w.fixed .old{text-decoration:line-through;opacity:.6}
+.w .new{font-weight:700}
+.w.fixed .new::before{content:" → "}
+.replab{font-size:.9rem;color:var(--muted);font-weight:600}
+
+.foot{font-size:.8rem;color:var(--muted);max-width:75ch}
+@media (max-width:520px){
+  h1{font-size:1.9rem}.lesson-head h2{font-size:2rem}.exhead h2{font-size:1.75rem}
+  .quiz.clocks .item{grid-template-columns:1.9rem 5rem minmax(0,1fr)}
+  .score{margin-left:0;flex-basis:100%}
+  .slot{min-width:6.5rem}
+}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <p class="eyebrow">English · 8 клас · Revision</p>
+      <h1>Revision Trainer</h1>
+    </div>
+    <div class="tools">
+      <button class="btn quiet" id="relock" type="button" hidden>Відповіді відкрито · закрити</button>
+      <button class="btn sq" id="fsDown" type="button" aria-label="Зменшити текст">A−</button>
+      <button class="btn sq" id="fsUp" type="button" aria-label="Збільшити текст">A+</button>
+      <button class="btn" id="full" type="button">На весь екран</button>
+    </div>
+    <nav class="tabs" id="tabs" aria-label="Уроки"></nav>
+  </header>
+  <main id="view"></main>
+  <p class="foot">Додаткові вправи до розділу Revision підручника Morska English 8 (Lessons 2–4, с. 7–14). Усі речення у вправах складено окремо, щоб повторити ті самі теми на новому матеріалі. Для некомерційного навчального використання.</p>
+</div>
+
+<script>
+(() => {
+'use strict';
+
+/* ---------- content ---------- */
+const LESSONS = [
+{ id:'l2', n:2, pages:'с. 7–9', title:'Sports and Games', sub:'Спорт та ігри. Лексика: види спорту, спорядження, місця. Граматика: Past Simple.', hash:'1766u2t', ex:[
+  { id:'l2a', kind:'vocab', type:'bins', title:'Play, go or do?', ref:'до впр. 2, с. 7',
+    task:'Which verb goes with each sport? Sort the words into three groups.',
+    cats:['play','go','do'],
+    items:[['football',0],['tennis',0],['basketball',0],['volleyball',0],['badminton',0],['chess',0],
+           ['swimming',1],['skiing',1],['cycling',1],['jogging',1],['ice skating',1],['surfing',1],
+           ['karate',2],['judo',2],['gymnastics',2],['aerobics',2],['yoga',2],['weightlifting',2]] },
+  { id:'l2b', kind:'vocab', type:'quiz', title:'Sports quiz', ref:'до впр. 1, с. 7',
+    task:'Choose the right word to complete each sentence.',
+    items:[
+      {q:'In tennis, you hit the ball with a ___.', o:['racket','stick','glove']},
+      {q:'An ice hockey player hits the ___ with a stick.', o:['puck','ball','arrow']},
+      {q:'A swimmer wears ___ to see under water.', o:['goggles','gloves','skates']},
+      {q:'Boxers fight in a ___.', o:['ring','court','pool']},
+      {q:'A cyclist wears a ___ to protect the head.', o:['helmet','scarf','net']},
+      {q:'The ___ controls a football match and has a whistle.', o:['referee','coach','fan']},
+      {q:'The ___ stops the ball from going into the goal.', o:['goalkeeper','referee','runner']},
+      {q:'Nobody won. The game ended in a ___.', o:['draw','goal','prize']} ] },
+  { id:'l2c', kind:'vocab', type:'slots', match:true, title:'Where do you do it?', ref:'до впр. 1, с. 7',
+    task:'Match each sport with the place where people do it.',
+    rows:[{pre:'football',a:'pitch'},{pre:'tennis',a:'court'},{pre:'swimming',a:'pool'},{pre:'boxing',a:'ring'},
+          {pre:'ice skating',a:'rink'},{pre:'golf',a:'course'},{pre:'running',a:'track'},{pre:'skiing',a:'slope'}],
+    extra:['field','gym'] },
+  { id:'l2d', kind:'vocab', type:'bins', title:'Team or individual?', ref:'до впр. 4, с. 8',
+    task:'Is it a team sport or an individual sport? Sort the words.',
+    cats:['Team sports','Individual sports'],
+    items:[['football',0],['basketball',0],['volleyball',0],['hockey',0],['handball',0],['rugby',0],
+           ['archery',1],['fencing',1],['boxing',1],['wrestling',1],['weightlifting',1],['gymnastics',1]] },
+  { id:'l2e', kind:'grammar', type:'type', title:'Past Simple: verb forms', ref:'до впр. 7, с. 9',
+    task:'Write the verbs in brackets in the Past Simple.',
+    items:[
+      'Our team {won} (win) the match 3–1 yesterday.',
+      'I {went} (go) jogging in the park last Sunday.',
+      'She {swam} (swim) two kilometres last week.',
+      'We {played} (play) volleyball on the beach in July.',
+      'He {didn\'t score|did not score} (not / score) a goal in the last game.',
+      'They {ran} (run) a marathon two years ago.',
+      '{Did} you {watch} (watch) the boxing match last night?',
+      'My sister {took} (take) part in a chess competition in May.',
+      'We {didn\'t go|did not go} (not / go) skiing last winter.',
+      'The coach {was} (be) very happy after the game.' ] },
+  { id:'l2f', kind:'grammar', type:'fix', title:'Past Simple: find the mistake', ref:'до впр. 6, с. 9',
+    task:'There is one mistake in each sentence. Find it and correct it.',
+    items:[
+      {s:'Did you watched the match last night?', w:'watched', o:['watch','watches','watching']},
+      {s:'We winned the game last Saturday.', w:'winned', o:['won','win','wins']},
+      {s:"She don't go to the gym yesterday.", w:"don't", o:["didn't","doesn't","isn't"]},
+      {s:'My brother swim in the lake last summer.', w:'swim', o:['swam','swims','swimming']},
+      {s:'They was at the stadium two days ago.', w:'was', o:['were','are','is']},
+      {s:"I didn't played tennis last week.", w:'played', o:['play','plays','playing']},
+      {s:'Where did you went skiing last winter?', w:'went', o:['go','goes','gone']},
+      {s:'He runned five kilometres yesterday morning.', w:'runned', o:['ran','run','runs']} ] },
+  { id:'l2g', kind:'grammar', type:'order', title:'Past Simple: build the sentence', ref:'до впр. 7, с. 9',
+    task:'Put the words in the correct order.',
+    items:[
+      {w:['where','did','you','play','football','yesterday'], end:'?'},
+      {w:['did','they','win','the match','last night'], end:'?'},
+      {w:['what time','did','the game','start'], end:'?'},
+      {w:['she',"didn't",'go','swimming','last weekend'], end:'.', alt:["last weekend she didn't go swimming"]},
+      {w:['who','did','you','play','tennis','with'], end:'?'},
+      {w:['how many','goals','did','he','score'], end:'?'} ] },
+  { id:'l2h', kind:'grammar', type:'quiz', title:'Was, were or did?', ref:'до впр. 6, с. 9',
+    task:'Choose the correct word.',
+    items:[
+      {q:'___ you at the stadium yesterday?', o:['Were','Was','Did']},
+      {q:'___ she play basketball last week?', o:['Did','Was','Were']},
+      {q:'The match ___ very exciting.', o:['was','were','did']},
+      {q:'We ___ win, but we played well.', o:["didn't","weren't","wasn't"]},
+      {q:'Where ___ your friends last Saturday?', o:['were','was','did']},
+      {q:'I ___ tired after the training.', o:['was','were','did']},
+      {q:'What ___ you do after school yesterday?', o:['did','were','was']},
+      {q:'They ___ at home. They were at the gym.', o:["weren't","didn't","wasn't"]} ] }
+]},
+{ id:'l3', n:3, pages:'с. 10–13', title:'Shopping. Food and Drinks', sub:'Покупки, їжа та напої. Лексика: магазини, одяг, ресторан. Граматика: be going to, прислівники частотності.', hash:'1k1wc06', ex:[
+  { id:'l3a', kind:'vocab', type:'slots', match:true, title:'Where can you buy it?', ref:'до впр. 5, с. 11',
+    task:'Match the things with the shops where you can buy them.',
+    rows:[{pre:'bread and rolls',a:"baker's"},{pre:'meat and sausages',a:"butcher's"},{pre:'medicine',a:"chemist's"},{pre:'roses and tulips',a:"florist's"},
+          {pre:'a ring and earrings',a:"jeweller's"},{pre:'newspapers and magazines',a:"newsagent's"},{pre:'fresh fish',a:"fishmonger's"},{pre:'apples and carrots',a:"greengrocer's"}],
+    extra:["grocer's","optician's"] },
+  { id:'l3b', kind:'vocab', type:'quiz', title:'Which shop?', ref:'до впр. 5, с. 11',
+    task:'Read the situation and choose the right shop.',
+    items:[
+      {q:'You need a hammer and some nails. You go to the ___.', o:["ironmonger's","haberdashery","chemist's"]},
+      {q:'You want buttons, needles and thread. You go to the ___.', o:['haberdashery',"ironmonger's","newsagent's"]},
+      {q:'You need new glasses. You go to the ___.', o:["optician's","jeweller's","florist's"]},
+      {q:'You want to buy sugar, flour and tea. You go to the ___.', o:["grocer's","butcher's","fishmonger's"]},
+      {q:'Your kettle is broken. You buy a new one at the ___.', o:['electrical store','book shop','shoe shop']},
+      {q:'You want to buy a dictionary. You go to the ___.', o:['book shop','library',"baker's"]} ] },
+  { id:'l3c', kind:'vocab', type:'bins', title:'A pair of…', ref:'до правила, с. 12',
+    task:'Which words do we use with “a pair of”? Sort the words.',
+    cats:['a pair of …','a / an …'],
+    items:[['jeans',0],['trousers',0],['gloves',0],['socks',0],['scissors',0],['glasses',0],['shorts',0],['trainers',0],
+           ['T-shirt',1],['dress',1],['scarf',1],['hat',1],['jacket',1],['umbrella',1],['skirt',1],['belt',1]] },
+  { id:'l3d', kind:'vocab', type:'slots', title:'In a clothes shop', ref:'до впр. 2, с. 10',
+    task:'Complete the dialogue with the words from the box. There are two extra words.',
+    rows:[
+      {sp:'Assistant', pre:'Good afternoon. Can I ', a:'help', post:' you?'},
+      {sp:'Customer', pre:"Yes, please. I'm ", a:'looking', post:' for a warm jacket.'},
+      {sp:'Assistant', pre:'What ', a:'size', post:' are you?'},
+      {sp:'Customer', pre:'Medium, I think. Can I ', a:'try', post:' this one on?'},
+      {sp:'Assistant', pre:'Of course. The ', a:'changing rooms', post:' are next to the mirror.'},
+      {sp:'Customer', pre:"It's too small. It doesn't ", a:'fit', post:' me.'},
+      {sp:'Assistant', pre:'Here is a bigger one.', a:null},
+      {sp:'Customer', pre:'Great! How ', a:'much', post:' is it?'},
+      {sp:'Assistant', pre:'Forty pounds. Would you like to pay by card or in ', a:'cash', post:'?'} ],
+    extra:['wear','many'] },
+  { id:'l3e', kind:'vocab', type:'bins', title:'Food and drinks', ref:'до впр. 6, с. 12',
+    task:'Sort the words into four groups.',
+    cats:['Fruit','Vegetables','Drinks','Dairy'],
+    items:[['pear',0],['plum',0],['cherry',0],['grapes',0],['cabbage',1],['onion',1],['cucumber',1],['beetroot',1],
+           ['juice',2],['lemonade',2],['mineral water',2],['tea',2],['cheese',3],['butter',3],['yoghurt',3],['cream',3]] },
+  { id:'l3f', kind:'vocab', type:'quiz', title:'At the restaurant', ref:'до впр. 7–8, с. 12–13',
+    task:'Choose the right word.',
+    items:[
+      {q:'The list of dishes in a restaurant is the ___.', o:['menu','bill','recipe']},
+      {q:'After the meal, you ask the waiter for the ___.', o:['bill','menu','order']},
+      {q:"I'd like to ___ a table for four, please.", o:['book','cook','pay']},
+      {q:'Ice cream and cake are popular ___.', o:['desserts','starters','drinks']},
+      {q:'Prawns, crabs and lobsters are ___.', o:['seafood','poultry','vegetables']},
+      {q:"Are you ready to ___? — Yes, I'll have the soup.", o:['order','reserve','serve']},
+      {q:'You eat soup with a ___.', o:['spoon','fork','knife']},
+      {q:"I'm not very hungry. I'd like a ___ lunch.", o:['light','thin','weak']} ] },
+  { id:'l3g', kind:'grammar', type:'type', title:'Be going to: plans', ref:'до впр. 1, с. 10',
+    task:'Complete the sentences with the correct form of be going to and the verb in brackets.',
+    items:[
+      "I {am going to buy|'m going to buy} (buy) a new jacket on Saturday.",
+      "The sky is very dark. It {is going to snow|'s going to snow} (snow).",
+      "We {are going to have|'re going to have} (have) lunch at a pizza place.",
+      "She {is not going to cook|isn't going to cook|'s not going to cook} (not / cook) tonight.",
+      '{Are} you {going to order} (order) a dessert?',
+      'My parents {are going to book} (book) a table for Friday.',
+      "He {is going to try|'s going to try} (try) on these trainers.",
+      "I {am not going to spend|'m not going to spend} (not / spend) all my pocket money." ] },
+  { id:'l3h', kind:'grammar', type:'order', title:'Be going to: word order', ref:'до впр. 1, с. 10',
+    task:'Put the words in the correct order.',
+    items:[
+      {w:['what','are','you','going to','buy'], end:'?'},
+      {w:['we','are','going to','visit','the new','shopping centre'], end:'.'},
+      {w:['is','she','going to','pay','by card'], end:'?'},
+      {w:['I','am','not','going to','eat','fast food'], end:'.'},
+      {w:['they','are','going to','open','a bakery','here'], end:'.'} ] },
+  { id:'l3i', kind:'grammar', type:'order', title:'How often? Word order', ref:'до впр. 9, с. 13',
+    task:'First put the adverbs in order from 0% to 100%. Then build the sentences.',
+    items:[
+      {label:'0% → 100%', plain:true, w:['never','rarely','sometimes','often','usually','always'], end:''},
+      {w:['Linda','is','never','late','for school'], end:'.'},
+      {w:['we','usually','go','shopping','on Saturdays'], end:'.', alt:['on saturdays we usually go shopping','usually we go shopping on saturdays']},
+      {w:['my dad','often','cooks','dinner'], end:'.'},
+      {w:['do','you','always','read','the label'], end:'?'},
+      {w:['Tom',"doesn't",'often','eat','sweets'], end:'.'},
+      {w:['I','am','sometimes','tired','after school'], end:'.', alt:['sometimes i am tired after school']} ] },
+  { id:'l3j', kind:'grammar', type:'quiz', title:'Adverbs of frequency', ref:'до впр. 9, с. 13',
+    task:'Choose the correct option.',
+    items:[
+      {q:'James never ___ coffee.', o:['drinks','drink','is drinking']},
+      {q:'She ___ late for lessons.', o:['is always','always is','always']},
+      {q:'We ___ to the market on Sundays.', o:['usually go','go usually','usually goes']},
+      {q:'___ do you go shopping? — Twice a week.', o:['How often','How many','How long']},
+      {q:'Tom ___ fast food. He hates it.', o:['never eats','eats never','never eat']},
+      {q:'My friends ___ happy to help.', o:['are always','always are','is always']},
+      {q:'“Rarely” means ___.', o:['not often','very often','every day']},
+      {q:"I ___ breakfast. It's important for me.", o:['always have','have always','always has']} ] }
+]},
+{ id:'l4', n:4, pages:'с. 14', title:'Appearance and Character', sub:'Зовнішність і характер. Лексика: риси характеру, час на годиннику. Граматика: is / has got, порядок слів.', hash:'1gq682l', ex:[
+  { id:'l4a', kind:'vocab', type:'quiz', title:'What time is it?', ref:'до впр. 1, с. 14',
+    task:'Look at the clocks and choose the correct time.',
+    items:[
+      {q:'What time is it?', clock:[7,15], o:['quarter past seven','quarter to seven','half past seven']},
+      {q:'What time is it?', clock:[9,30], o:['half past nine','half past ten','quarter past nine']},
+      {q:'What time is it?', clock:[4,45], o:['quarter to five','quarter past four','quarter to four']},
+      {q:'What time is it?', clock:[10,20], o:['twenty past ten','twenty to ten','ten past twenty']},
+      {q:'What time is it?', clock:[2,55], o:['five to three','five past three','five to two']},
+      {q:'What time is it?', clock:[12,0], o:["twelve o'clock",'half past twelve','quarter past twelve']},
+      {q:'What time is it?', clock:[6,40], o:['twenty to seven','twenty past six','twenty to six']},
+      {q:'What time is it?', clock:[3,5], o:['five past three','five to three','three past five']} ] },
+  { id:'l4b', kind:'vocab', type:'slots', match:true, title:'a.m. or p.m.?', ref:'до впр. 1, с. 14',
+    task:'Match the 24-hour times with the 12-hour times. There are two extra times.',
+    rows:[{pre:'07:30',a:'7:30 a.m.'},{pre:'13:15',a:'1:15 p.m.'},{pre:'19:40',a:'7:40 p.m.'},{pre:'00:10',a:'12:10 a.m.'},
+          {pre:'12:20',a:'12:20 p.m.'},{pre:'22:05',a:'10:05 p.m.'},{pre:'16:50',a:'4:50 p.m.'},{pre:'09:25',a:'9:25 a.m.'}],
+    extra:['1:15 a.m.','10:05 a.m.'] },
+  { id:'l4c', kind:'vocab', type:'slots', match:true, title:'Character: definitions', ref:'до впр. 2, с. 14',
+    task:'Read the descriptions and choose the right adjective for each one.',
+    rows:[
+      {pre:'You can always count on this person.', a:'reliable'},
+      {pre:'This person thinks only about himself or herself.', a:'selfish'},
+      {pre:'This person feels nervous when talking to new people.', a:'shy'},
+      {pre:'This person wants to know and learn everything.', a:'curious'},
+      {pre:"This person doesn't boast about his or her success.", a:'modest'},
+      {pre:'This person always comes up with new ideas.', a:'inventive'},
+      {pre:'This person is relaxed and rarely gets upset.', a:'easy-going'},
+      {pre:'This person hurts people or animals on purpose.', a:'cruel'} ],
+    extra:['fair','unfair'] },
+  { id:'l4d', kind:'vocab', type:'bins', title:'Positive or negative?', ref:'до впр. 2–3, с. 14',
+    task:'Is it a good or a bad quality? Sort the adjectives.',
+    cats:['Positive','Negative'],
+    items:[['friendly',0],['polite',0],['helpful',0],['reliable',0],['fair',0],['modest',0],['inventive',0],['easy-going',0],
+           ['rude',1],['selfish',1],['cruel',1],['unfair',1],['lazy',1],['greedy',1]] },
+  { id:'l4e', kind:'vocab', type:'quiz', title:'What are they like?', ref:'до впр. 3, с. 14',
+    task:'Read about the people and choose the adjective that describes them.',
+    items:[
+      {q:'Mark never shares his sweets with anybody. He is ___.', o:['selfish','modest','reliable']},
+      {q:'Olia always says “please” and “thank you”. She is ___.', o:['polite','rude','cruel']},
+      {q:'Denys always keeps his promises. He is ___.', o:['reliable','shy','unfair']},
+      {q:'Ann asks a hundred questions every day. She is ___.', o:['curious','selfish','modest']},
+      {q:'Our teacher has the same rules for everybody. She is ___.', o:['fair','cruel','shy']},
+      {q:"Ivan won the contest, but he doesn't talk about it. He is ___.", o:['modest','rude','selfish']},
+      {q:'Kate makes robots out of old boxes. She is ___.', o:['inventive','selfish','unfair']},
+      {q:'Tim blushes when he speaks to new people. He is ___.', o:['shy','easy-going','cruel']} ] },
+  { id:'l4f', kind:'vocab', type:'slots', match:true, title:'Opposites', ref:'до впр. 2, с. 14',
+    task:'Match the adjectives with their opposites. There are two extra words.',
+    rows:[{pre:'polite',a:'rude'},{pre:'fair',a:'unfair'},{pre:'kind',a:'cruel'},{pre:'generous',a:'selfish'},
+          {pre:'hard-working',a:'lazy'},{pre:'confident',a:'shy'},{pre:'honest',a:'dishonest'},{pre:'friendly',a:'unfriendly'}],
+    extra:['reliable','modest'] },
+  { id:'l4g', kind:'grammar', type:'quiz', title:'Is or has got?', ref:'до теми уроку',
+    task:'Choose the correct word to describe people.',
+    items:[
+      {q:'My sister ___ long curly hair.', o:['has got','is','have got']},
+      {q:'He ___ tall and slim.', o:['is','has got','have got']},
+      {q:'My grandparents ___ grey hair.', o:['have got','has got','are']},
+      {q:'She ___ very friendly and helpful.', o:['is','has got','have got']},
+      {q:'Our coach ___ a short beard.', o:['has got','is','are']},
+      {q:'I ___ of medium height.', o:['am','have got','has got']},
+      {q:'What ___ he look like?', o:['does','is','has']},
+      {q:"What ___ she like? — She's kind and easy-going.", o:['is','does','has']} ] },
+  { id:'l4h', kind:'grammar', type:'order', title:'Describing people: word order', ref:'до теми уроку',
+    task:'Put the words in the correct order.',
+    items:[
+      {w:['what','does','your','best friend','look like'], end:'?'},
+      {w:['she','has got','big','brown','eyes'], end:'.'},
+      {w:['he','is','a very','reliable','person'], end:'.'},
+      {w:['what','is','your','new classmate','like'], end:'?'},
+      {w:['they',"aren't",'rude','to','other people'], end:'.'} ] }
+]}
+];
+
+const HOW = {
+  quiz:'Обери один варіант у кожному пункті.',
+  bins:'Торкнись слова, а потім колонки, куди воно належить.',
+  slots:'Торкнись слова, а потім пропуску. Щоб прибрати слово, торкнись заповненого пропуску.',
+  type:'Впиши відповідь у кожен пропуск.',
+  order:'Торкайся слів у правильному порядку. Щоб прибрати слово, торкнись його ще раз.',
+  fix:'Торкнись слова з помилкою, а потім обери правильний варіант.'
+};
+const TYPE_UA = { quiz:'вибір варіанта', bins:'сортування', slots:'слова в пропуски', type:'письмо', order:'порядок слів', fix:'пошук помилки' };
+
+/* ---------- helpers ---------- */
+const $ = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
+const btn = (cls, txt) => { const b = $('button', cls, txt); b.type = 'button'; return b; };
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const norm = s => String(s).toLowerCase().replace(/[’‘`ʼ]/g, "'").replace(/\s+/g, ' ').trim().replace(/[.?!]+$/, '').trim();
+const hash = s => { let h = 5381; for (const ch of String(s).trim().toUpperCase()) h = ((h * 33) ^ ch.charCodeAt(0)) >>> 0; return h.toString(36); };
+const store = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+};
+const mark = (el, good) => { el.classList.remove('ok', 'bad'); if (good != null) el.classList.add(good ? 'ok' : 'bad'); };
+
+function clockSVG(h, m) {
+  let t = '';
+  for (let i = 0; i < 12; i++) t += `<line class="tick${i % 3 ? '' : ' big'}" x1="50" y1="7" x2="50" y2="${i % 3 ? 11 : 13}" transform="rotate(${i * 30} 50 50)"/>`;
+  const num = [[12, 50, 21], [3, 80, 50], [6, 50, 80], [9, 20, 50]].map(([n, x, y]) => `<text x="${x}" y="${y}">${n}</text>`).join('');
+  return `<svg viewBox="0 0 100 100" role="img" aria-label="Годинник"><circle class="face" cx="50" cy="50" r="46"/>${t}${num}` +
+    `<line class="hh" x1="50" y1="50" x2="50" y2="29" transform="rotate(${(h % 12) * 30 + m * 0.5} 50 50)"/>` +
+    `<line class="mh" x1="50" y1="50" x2="50" y2="15" transform="rotate(${m * 6} 50 50)"/><circle class="pin" cx="50" cy="50" r="3"/></svg>`;
+}
+
+/* ---------- exercise builders: each returns {el, check() -> [right,total], reveal()} ---------- */
+const BUILD = {
+  quiz(ex) {
+    const el = $('ol', 'items quiz' + (ex.items[0].clock ? ' clocks' : ''));
+    const parts = ex.items.map(it => {
+      const li = $('li', 'item');
+      if (it.clock) { const f = $('div', 'clock'); f.innerHTML = clockSVG(it.clock[0], it.clock[1]); li.append(f); }
+      const main = $('div', 'main'), q = $('p', 'q'), opts = $('div', 'opts');
+      let blank = null, chosen = -1;
+      it.q.split('___').forEach((s, i) => { if (i) { blank = $('span', 'blank'); q.append(blank); } q.append(s); });
+      const pick = k => { chosen = k; btns.forEach(b => { mark(b); b.classList.toggle('sel', +b.dataset.k === k); }); if (blank) blank.textContent = it.o[k]; };
+      const btns = shuffle(it.o.map((t, k) => [t, k])).map(([t, k]) => { const b = btn('opt', t); b.dataset.k = k; b.onclick = () => pick(k); opts.append(b); return b; });
+      main.append(q, opts); li.append(main); el.append(li);
+      return {
+        check() { btns.forEach(b => mark(b)); const b = btns.find(b => +b.dataset.k === chosen); if (b) { b.classList.remove('sel'); mark(b, chosen === 0); } return chosen === 0; },
+        reveal() { pick(0); }
+      };
+    });
+    return { el, check: () => [parts.filter(p => p.check()).length, parts.length], reveal: () => parts.forEach(p => p.reveal()) };
+  },
+
+  bins(ex) {
+    const el = $('div'), pool = $('div', 'pool'), grid = $('div', 'bins');
+    let sel = null;
+    const setSel = c => { if (sel) sel.classList.remove('sel'); sel = c; if (c) c.classList.add('sel'); };
+    const move = (chip, to) => { mark(chip); to.append(chip); setSel(null); };
+    const lists = ex.cats.map(name => {
+      const bin = $('div', 'bin'), list = $('div', 'list');
+      bin.tabIndex = 0; bin.setAttribute('role', 'button'); bin.setAttribute('aria-label', 'Колонка ' + name);
+      bin.append($('h4', '', name), list);
+      bin.onclick = () => { if (sel) move(sel, list); };
+      bin.onkeydown = e => { if (e.target === bin && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); bin.click(); } };
+      grid.append(bin); return list;
+    });
+    pool.onclick = () => { if (sel && sel.parentNode !== pool) move(sel, pool); };
+    const chips = shuffle(ex.items).map(([t, c]) => {
+      const b = btn('chip', t);
+      b.onclick = e => {
+        e.stopPropagation();
+        const p = b.parentNode;
+        if (sel && sel !== b && p !== pool && sel.parentNode !== p) { move(sel, p); return; }
+        mark(b); setSel(sel === b ? null : b);
+      };
+      pool.append(b); return [b, c];
+    });
+    el.append(pool, grid);
+    return {
+      el,
+      check() { let r = 0; chips.forEach(([b, c]) => { const i = lists.indexOf(b.parentNode); mark(b, i < 0 ? null : i === c); if (i === c) r++; }); setSel(null); return [r, chips.length]; },
+      reveal() { setSel(null); chips.forEach(([b, c]) => { mark(b); lists[c].append(b); }); }
+    };
+  },
+
+  slots(ex) {
+    const el = $('div'), bank = $('div', 'pool'), rows = $('div', 'rows' + (ex.match ? ' match' : ''));
+    let sel = null, selSlot = null;
+    const setSel = c => { if (sel) sel.classList.remove('sel'); sel = c; if (c) c.classList.add('sel'); };
+    const setSlot = s => { if (selSlot) selSlot.classList.remove('sel'); selSlot = s; if (s) s.classList.add('sel'); };
+    const clear = s => { if (s._chip) { s._chip.hidden = false; s._chip = null; } s.textContent = ''; s.classList.remove('filled'); mark(s); };
+    const place = (s, chip) => { clear(s); s._chip = chip; chip.hidden = true; s.textContent = chip.textContent; s.classList.add('filled'); setSel(null); setSlot(null); };
+    const slots = [];
+    ex.rows.forEach(r => {
+      const row = $('div', 'row');
+      let s = null;
+      if (r.a != null) {
+        s = btn('slot'); s._a = r.a; s._chip = null; s.setAttribute('aria-label', 'пропуск');
+        s.onclick = () => { if (sel) place(s, sel); else if (s._chip) clear(s); else setSlot(selSlot === s ? null : s); };
+        slots.push(s);
+      }
+      if (ex.match) row.append($('span', 'term', r.pre), s);
+      else { if (r.sp) row.append($('b', 'sp', r.sp + ': ')); row.append(r.pre || ''); if (s) row.append(s, r.post || ''); }
+      rows.append(row);
+    });
+    const chips = shuffle(ex.rows.filter(r => r.a != null).map(r => r.a).concat(ex.extra || [])).map(t => {
+      const c = btn('chip', t);
+      c.onclick = () => { if (selSlot) place(selSlot, c); else setSel(sel === c ? null : c); };
+      bank.append(c); return c;
+    });
+    el.append(bank, rows);
+    return {
+      el,
+      check() { let r = 0; setSel(null); setSlot(null); slots.forEach(s => { if (!s._chip) { mark(s); return; } const good = s._chip.textContent === s._a; mark(s, good); if (good) r++; }); return [r, slots.length]; },
+      reveal() { slots.forEach(clear); slots.forEach(s => place(s, chips.find(c => !c.hidden && c.textContent === s._a))); }
+    };
+  },
+
+  type(ex) {
+    const el = $('ol', 'items');
+    const inputs = [];
+    ex.items.forEach(str => {
+      const li = $('li', 'item'), p = $('p', 'q');
+      str.split(/(\{[^}]+\}|\([^)]+\))/).forEach(seg => {
+        if (!seg) return;
+        if (seg[0] === '{') {
+          const alts = seg.slice(1, -1).split('|');
+          const i = $('input', 'gap'); i.type = 'text'; i.id = ex.id + '-g' + inputs.length;
+          i.autocomplete = 'off'; i.autocapitalize = 'off'; i.spellcheck = false;
+          i.size = Math.max(...alts.map(a => a.length)) + 1; i.setAttribute('aria-label', 'відповідь');
+          const m = $('span', 'gm'); i._alts = alts.map(norm); i._show = alts[0]; i._m = m;
+          i.oninput = () => { mark(i); m.textContent = ''; };
+          inputs.push(i); p.append(i, m);
+        } else if (seg[0] === '(') p.append($('span', 'hint', seg));
+        else p.append(seg);
+      });
+      li.append(p); el.append(li);
+    });
+    return {
+      el,
+      check() { let r = 0; inputs.forEach(i => { if (!i.value.trim()) { mark(i); i._m.textContent = ''; return; } const good = i._alts.includes(norm(i.value)); mark(i, good); i._m.className = 'gm ' + (good ? 'ok' : 'bad'); i._m.textContent = good ? '✓' : '✗'; if (good) r++; }); return [r, inputs.length]; },
+      reveal() { inputs.forEach(i => { i.value = i._show; mark(i); i._m.textContent = ''; }); }
+    };
+  },
+
+  order(ex) {
+    const el = $('ol', 'items');
+    const parts = ex.items.map(it => {
+      const li = $('li', 'item'), build = $('div', 'build'), line = $('div', 'line' + (it.plain ? ' plain' : '')), tray = $('div', 'tray');
+      if (it.label) li.append($('p', 'lbl', it.label));
+      build.append(line); if (it.end) build.append($('span', 'end', it.end));
+      const target = it.w.join(' ');
+      let order = shuffle(it.w); for (let n = 0; n < 8 && order.join(' ') === target; n++) order = shuffle(it.w);
+      const chips = order.map(t => { const c = btn('chip', t); c.onclick = () => { mark(li); (c.parentNode === tray ? line : tray).append(c); }; tray.append(c); return c; });
+      li.append(build, tray); el.append(li);
+      return {
+        check() { const got = [...line.children].map(c => c.textContent).join(' '); if (!line.children.length) { mark(li); return false; } const good = norm(got) === norm(target) || (it.alt || []).some(a => norm(a) === norm(got)); mark(li, good); return good; },
+        reveal() { mark(li); it.w.forEach(t => line.append(chips.find(c => c.textContent === t && !c._used && (c._used = true)))); chips.forEach(c => { c._used = false; }); }
+      };
+    });
+    return { el, check: () => [parts.filter(p => p.check()).length, parts.length], reveal: () => parts.forEach(p => p.reveal()) };
+  },
+
+  fix(ex) {
+    const el = $('ol', 'items');
+    const parts = ex.items.map(it => {
+      const li = $('li', 'item'), sent = $('p', 'sent'), row = $('div', 'opts');
+      row.hidden = true;
+      let idx = -1, opt = -1;
+      const toks = it.s.split(' ');
+      const wrong = toks.findIndex(t => t.replace(/[.?!,]+$/, '') === it.w);
+      const ws = toks.map((t, i) => {
+        const m = t.match(/^(.*?)([.?!,]*)$/);
+        const b = btn('w'), neu = $('span', 'new'); b.append($('span', 'old', m[1]), neu, m[2]);
+        b.onclick = () => { idx = idx === i ? -1 : i; opt = -1; draw(); };
+        sent.append(b);
+        return { b, neu };
+      });
+      const obtns = shuffle(it.o.map((t, k) => [t, k])).map(([t, k]) => { const b = btn('opt', t); b.dataset.k = k; b.onclick = () => { opt = k; draw(); }; return b; });
+      row.append($('span', 'replab', 'Заміни на:'), ...obtns);
+      function draw() {
+        mark(li);
+        ws.forEach((w, i) => { w.b.classList.toggle('sel', i === idx); w.b.classList.toggle('fixed', i === idx && opt >= 0); w.neu.textContent = i === idx && opt >= 0 ? it.o[opt] : ''; });
+        obtns.forEach(b => b.classList.toggle('sel', +b.dataset.k === opt));
+        row.hidden = idx < 0;
+      }
+      li.append(sent, row); el.append(li);
+      return {
+        check() { const good = idx === wrong && opt === 0; mark(li, idx < 0 ? null : good); return good; },
+        reveal() { idx = wrong; opt = 0; draw(); }
+      };
+    });
+    return { el, check: () => [parts.filter(p => p.check()).length, parts.length], reveal: () => parts.forEach(p => p.reveal()) };
+  }
+};
+
+/* ---------- app state ---------- */
+const view = document.getElementById('view'), tabs = document.getElementById('tabs'), relock = document.getElementById('relock');
+const scores = {};                       // ex.id -> [right,total]
+const nodes = new Map();                 // ex.id -> built exercise node, so answers survive navigation
+const unlocked = new Set(store.get('e8-unlocked', []));
+let cur = { l: 0, e: -1 };
+
+function syncLock() { relock.hidden = unlocked.size === 0; store.set('e8-unlocked', [...unlocked]); }
+relock.onclick = () => { unlocked.clear(); syncLock(); };
+
+function scoreLabel(id) { const s = scores[id]; return s ? s[0] + ' / ' + s[1] : ''; }
+
+function menu(L, li) {
+  const board = $('section', 'board');
+  const head = $('div', 'lesson-head');
+  head.append($('p', 'eyebrow', 'Lesson ' + L.n + ' · ' + L.pages), $('h2', '', L.title), $('p', 'sub', L.sub));
+  const cols = $('div', 'cols');
+  [['vocab', 'Лексика'], ['grammar', 'Граматика']].forEach(([kind, name]) => {
+    const sec = $('section'), ol = $('ol', 'toc');
+    sec.append($('h3', '', name), ol);
+    L.ex.forEach((ex, i) => {
+      if (ex.kind !== kind) return;
+      const item = $('li'), b = btn('');
+      const tt = $('span', 'tt', ex.title); tt.append($('span', 'ty', TYPE_UA[ex.type] + ' · ' + ex.ref));
+      const s = scores[ex.id];
+      b.append($('span', 'n', String(i + 1)), tt, $('span', 'sc' + (s && s[0] === s[1] ? ' full' : ''), scoreLabel(ex.id)));
+      b.onclick = () => go(li, i);
+      item.append(b); ol.append(item);
+    });
+    cols.append(sec);
+  });
+  board.append(head, cols);
+  return board;
+}
+
+function exercise(L, li, ei) {
+  const ex = L.ex[ei];
+  const frag = $('div'); frag.style.display = 'flex'; frag.style.flexDirection = 'column'; frag.style.gap = '1rem';
+  const crumbs = $('div', 'crumbs'), back = btn('btn quiet', '← Зміст уроку');
+  back.onclick = () => go(li, -1);
+  crumbs.append(back, $('span', 'pos', 'Lesson ' + L.n + ' · вправа ' + (ei + 1) + ' із ' + L.ex.length));
+  if (!nodes.has(ex.id)) nodes.set(ex.id, frame(L, ex));
+  const pager = $('div', 'pager'), prev = btn('btn', '← Попередня'), next = btn('btn', 'Наступна →');
+  prev.disabled = ei === 0; next.disabled = ei === L.ex.length - 1;
+  prev.onclick = () => go(li, ei - 1); next.onclick = () => go(li, ei + 1);
+  pager.append(prev, next);
+  frag.append(crumbs, nodes.get(ex.id), pager);
+  return frag;
+}
+
+function frame(L, ex) {
+  const board = $('article', 'board');
+  const head = $('header', 'exhead'), meta = $('div', 'meta');
+  meta.append($('span', 'tag ' + ex.kind, ex.kind === 'vocab' ? 'Лексика' : 'Граматика'), $('span', 'ref', ex.ref));
+  head.append(meta, $('h2', '', ex.title), $('p', 'task', ex.task), $('p', 'how', HOW[ex.type]));
+  const body = $('div', 'exbody');
+  const foot = $('footer', 'exfoot');
+  const bCheck = btn('btn primary', 'Перевірити'), bReset = btn('btn', 'Спочатку'), bShow = btn('btn quiet', 'Відповіді');
+  const score = $('div', 'score'); score.setAttribute('aria-live', 'polite');
+  foot.append(bCheck, bReset, bShow, score);
+
+  const lock = $('form', 'lockbox'); lock.hidden = true;
+  const lab = $('label', '', 'Код учителя для Lesson ' + L.n + ':'), inp = $('input'), ok = $('button', 'btn primary', 'Відкрити'), err = $('p', 'err');
+  inp.type = 'text'; inp.id = ex.id + '-code'; inp.autocomplete = 'off'; inp.spellcheck = false; lab.htmlFor = inp.id; ok.type = 'submit'; err.hidden = true;
+  lock.append(lab, inp, ok, err);
+
+  let api;
+  const say = (big, small, full) => { score.className = 'score' + (full ? ' full' : ''); score.replaceChildren(); if (big) score.append($('b', '', big)); if (small) score.append($('span', '', small)); };
+  const mount = () => { api = BUILD[ex.type](ex); body.replaceChildren(api.el); say('', ''); };
+  const reveal = () => { api.reveal(); lock.hidden = true; say('', 'Показано правильні відповіді.'); };
+  mount();
+
+  bCheck.onclick = () => {
+    const [r, t] = api.check(); scores[ex.id] = [r, t];
+    say(r + ' / ' + t, r === t ? 'Усе правильно!' : 'Виправ позначене ✗ або дороби пропущене і перевір ще раз.', r === t);
+  };
+  bReset.onclick = () => { delete scores[ex.id]; mount(); };
+  bShow.onclick = () => {
+    if (unlocked.has(L.id)) { reveal(); return; }
+    lock.hidden = !lock.hidden; err.hidden = true; if (!lock.hidden) inp.focus();
+  };
+  lock.onsubmit = e => {
+    e.preventDefault();
+    if (hash(inp.value) === L.hash) { unlocked.add(L.id); syncLock(); inp.value = ''; reveal(); }
+    else { err.textContent = 'Код не підходить. Перевір розкладку клавіатури і спробуй ще раз.'; err.hidden = false; }
+  };
+  board.append(head, body, foot, lock);
+  return board;
+}
+
+function render() {
+  [...tabs.children].forEach((t, i) => t.setAttribute('aria-selected', String(i === cur.l)));
+  const L = LESSONS[cur.l];
+  view.replaceChildren(cur.e < 0 ? menu(L, cur.l) : exercise(L, cur.l, cur.e));
+}
+function go(l, e) {
+  cur = { l, e }; render();
+  try { history.replaceState(null, '', '#' + LESSONS[l].id + (e >= 0 ? '-' + (e + 1) : '')); } catch (err) {}
+  store.set('e8-pos', cur);
+  try { window.scrollTo(0, 0); } catch (err) {}
+}
+
+LESSONS.forEach((L, i) => {
+  const t = btn('tab'); t.setAttribute('role', 'tab');
+  t.append($('small', '', 'Lesson ' + L.n + ' · ' + L.pages), $('b', '', L.title));
+  t.onclick = () => go(i, -1);
+  tabs.append(t);
+});
+
+/* text size + fullscreen */
+const SIZES = [15, 18, 21, 24, 28];
+let fs = Math.min(SIZES.length - 1, Math.max(0, store.get('e8-fs', 1)));
+const applyFs = () => { document.documentElement.style.fontSize = SIZES[fs] + 'px'; store.set('e8-fs', fs); document.getElementById('fsDown').disabled = fs === 0; document.getElementById('fsUp').disabled = fs === SIZES.length - 1; };
+document.getElementById('fsDown').onclick = () => { fs = Math.max(0, fs - 1); applyFs(); };
+document.getElementById('fsUp').onclick = () => { fs = Math.min(SIZES.length - 1, fs + 1); applyFs(); };
+applyFs();
+const full = document.getElementById('full');
+if (!document.fullscreenEnabled) full.hidden = true;
+full.onclick = () => { try { const p = document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); if (p && p.catch) p.catch(() => {}); } catch (e) {} };
+
+/* start: deep link (#l3 or #l3-2), else last position */
+(function start() {
+  const m = /^#(l\d)(?:-(\d+))?$/.exec(location.hash || '');
+  let pos = store.get('e8-pos', { l: 0, e: -1 });
+  if (m) { const l = LESSONS.findIndex(L => L.id === m[1]); if (l >= 0) pos = { l, e: m[2] ? +m[2] - 1 : -1 }; }
+  if (!pos || !LESSONS[pos.l]) pos = { l: 0, e: -1 };
+  if (!(pos.e >= 0 && pos.e < LESSONS[pos.l].ex.length)) pos.e = -1;
+  cur = pos; syncLock(); render();
+})();
+})();
+</script>
+
+</body></html>
