@@ -1,5 +1,5 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>English 8 Revision Trainer</title>
+<title>English 8 Trainer</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Onest:wght@400;500;600;700&family=Sofia+Sans+Condensed:wght@600;800&display=swap">
 <style>
 /* Layout: a lesson contents sheet (vocabulary | grammar) leads to one exercise per screen, like a page on the board. */
@@ -48,9 +48,9 @@ h1{font:800 2.3rem/1 var(--display);text-transform:uppercase;letter-spacing:.01e
 .btn.sq{min-width:2.75rem;padding-inline:.5em}
 .btn:disabled{opacity:.45;cursor:default}
 .tabs{display:flex;flex-wrap:wrap;gap:.5rem;width:100%}
-.tab{flex:1 1 13rem;min-width:0;text-align:left;padding:.6rem .9rem;border:2px solid var(--line);border-radius:.55rem;background:var(--surface);cursor:pointer;display:flex;flex-direction:column;gap:.1rem}
+.tab{flex:1 1 9.5rem;min-width:0;text-align:left;padding:.5rem .75rem;border:2px solid var(--line);border-radius:.55rem;background:var(--surface);cursor:pointer;display:flex;flex-direction:column;gap:.1rem}
 .tab small{font:600 .75rem/1.2 var(--body);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
-.tab b{font:800 1.35rem/1.1 var(--display);text-transform:uppercase}
+.tab b{font:800 1.1rem/1.1 var(--display);text-transform:uppercase}
 .tab[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:var(--surface)}
 .tab[aria-selected="true"] small{color:var(--surface);opacity:.75}
 
@@ -168,13 +168,15 @@ h1{font:800 2.3rem/1 var(--display);text-transform:uppercase;letter-spacing:.01e
   .quiz.clocks .item{grid-template-columns:1.9rem 5rem minmax(0,1fr)}
   .score{margin-left:0;flex-basis:100%}
   .slot{min-width:6.5rem}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:.3rem;scroll-snap-type:x proximity}
+  .tab{flex:0 0 10.5rem;scroll-snap-align:start}
 }
 </style>
 
 <div class="wrap">
   <header class="top">
     <div>
-      <p class="eyebrow">English · 8 клас · Revision</p>
+      <p class="eyebrow">English · 8 клас · Revision · Unit 1</p>
       <h1>Revision Trainer</h1>
     </div>
     <div class="tools">
@@ -186,7 +188,7 @@ h1{font:800 2.3rem/1 var(--display);text-transform:uppercase;letter-spacing:.01e
     <nav class="tabs" id="tabs" aria-label="Уроки"></nav>
   </header>
   <main id="view"></main>
-  <p class="foot">Додаткові вправи до розділу Revision підручника Morska English 8 (Lessons 2–4, с. 7–14). Усі речення у вправах складено окремо, щоб повторити ті самі теми на новому матеріалі. Для некомерційного навчального використання.</p>
+  <p class="foot">Додаткові вправи до розділу Revision підручника Morska English 8 і Unit 1 (Lessons 2–10, с. 7–33). Усі речення у вправах складено окремо, щоб повторити ті самі теми на новому матеріалі. Для некомерційного навчального використання.</p>
 </div>
 
 <script>
@@ -358,7 +360,7 @@ const LESSONS = [
       {q:'“Rarely” means ___.', o:['not often','very often','every day']},
       {q:"I ___ breakfast. It's important for me.", o:['always have','have always','always has']} ] }
 ]},
-{ id:'l4', n:4, pages:'с. 14', title:'Appearance and Character', sub:'Зовнішність і характер. Лексика: риси характеру, час на годиннику. Граматика: is / has got, порядок слів.', hash:'1gq682l', ex:[
+{ id:'l4', n:4, pages:'с. 14–15', title:'Appearance and Character', sub:'Зовнішність і характер. Лексика: риси характеру, час на годиннику. Граматика: is / has got, порядок слів.', hash:'1gq682l', ex:[
   { id:'l4a', kind:'vocab', type:'quiz', title:'What time is it?', ref:'до впр. 1, с. 14',
     task:'Look at the clocks and choose the correct time.',
     items:[
@@ -408,6 +410,18 @@ const LESSONS = [
     rows:[{pre:'polite',a:'rude'},{pre:'fair',a:'unfair'},{pre:'kind',a:'cruel'},{pre:'generous',a:'selfish'},
           {pre:'hard-working',a:'lazy'},{pre:'confident',a:'shy'},{pre:'honest',a:'dishonest'},{pre:'friendly',a:'unfriendly'}],
     extra:['reliable','modest'] },
+  { id:'l4i', kind:'vocab', type:'bins', title:'Personality or look?', ref:'до впр. 4, с. 15',
+    task:'Does the word describe what a person is like or what a person looks like? Sort the words.',
+    cats:['Personality','Look'],
+    items:[['sociable',0],['talkative',0],['tidy',0],['impatient',0],['honest',0],['funny',0],['moody',0],['romantic',0],
+           ['handsome',1],['pretty',1],['slim',1],['skinny',1],['well-built',1],['overweight',1],['good-looking',1],['pale-skinned',1]] },
+  { id:'l4j', kind:'vocab', type:'bins', title:'Strengths and weaknesses: opposites', ref:'до впр. 5, с. 15',
+    task:'Which prefix makes the opposite of each adjective? Sort the words.',
+    cats:['un-','dis-','in-','im-'],
+    items:[['reliable',0],['punctual',0],['tidy',0],['friendly',0],
+           ['honest',1],['organised',1],['obedient',1],['agreeable',1],
+           ['flexible',2],['active',2],['correct',2],['dependent',2],
+           ['patient',3],['polite',3],['possible',3],['mature',3]] },
   { id:'l4g', kind:'grammar', type:'quiz', title:'Is or has got?', ref:'до теми уроку',
     task:'Choose the correct word to describe people.',
     items:[
@@ -427,6 +441,402 @@ const LESSONS = [
       {w:['he','is','a very','reliable','person'], end:'.'},
       {w:['what','is','your','new classmate','like'], end:'?'},
       {w:['they',"aren't",'rude','to','other people'], end:'.'} ] }
+]},
+{ id:'l5', n:5, pages:'с. 16–18', title:'Holidays and Traditions', sub:'Свята і традиції. Лексика: свята Великої Британії та США, символи свят. Граматика: типи запитань.', hash:'13acany', ex:[
+  { id:'l5a', kind:'vocab', type:'quiz', title:'Holidays quiz', ref:'до впр. 4, с. 17',
+    task:'Choose the right answer.',
+    items:[
+      {q:'People in Britain celebrate Christmas on the ___.', o:['25th of December','31st of October','1st of April']},
+      {q:'On April Fool’s Day people ___.', o:['play jokes on each other','exchange presents','go trick-or-treating']},
+      {q:'On Halloween children go ___.', o:['trick-or-treating','carol singing','to the seaside']},
+      {q:'On St. Patrick’s Day people usually wear ___.', o:['green','red','blue']},
+      {q:'Halloween is on the ___.', o:['31st of October','25th of December','14th of February']},
+      {q:'People send heart-shaped cards on ___.', o:['Valentine’s Day','Halloween','April Fool’s Day']},
+      {q:'At midnight on New Year’s Eve ___ ring.', o:['bells','phones','alarms']},
+      {q:'St. Patrick’s Day is the national holiday of ___.', o:['Ireland','Scotland','Wales']} ] },
+  { id:'l5b', kind:'vocab', type:'slots', match:true, title:'Holiday symbols', ref:'до впр. 5, с. 18',
+    task:'Match the symbols with the holidays. There are two extra holidays.',
+    rows:[{pre:'a green hat and a shamrock',a:'St. Patrick’s Day'},{pre:'a pumpkin lantern and costumes',a:'Halloween'},
+          {pre:'a decorated tree and Santa Claus',a:'Christmas'},{pre:'coloured eggs and a rabbit',a:'Easter'},
+          {pre:'fireworks at midnight',a:'New Year’s Eve'},{pre:'funny jokes and tricks',a:'April Fool’s Day'},
+          {pre:'flowers and a card for mum',a:'Mother’s Day'},{pre:'a red heart and roses',a:'Valentine’s Day'}],
+    extra:['Thanksgiving Day','Independence Day'] },
+  { id:'l5c', kind:'vocab', type:'slots', title:'New Year in the USA', ref:'до впр. 1, с. 16',
+    task:'Complete the text with the words from the box. There are two extra words.',
+    rows:[
+      {pre:'On New Year’s Eve Americans stay up late to ', a:'celebrate', post:' the arrival of the New Year.'},
+      {pre:'Thousands of people ', a:'gather', post:' in Times Square in New York.'},
+      {pre:'It is one of the noisiest and most ', a:'crowded', post:' celebrations in the world.'},
+      {pre:'At ', a:'midnight', post:' bells ring and friends exchange kisses.'},
+      {pre:'Many people want to give up bad ', a:'habits', post:'.'},
+      {pre:'They make New Year ', a:'resolutions', post:' and promise to be better.'},
+      {pre:'They say they will “turn over a new ', a:'leaf', post:'”.'} ],
+    extra:['presents','quiet'] },
+  { id:'l5d', kind:'grammar', type:'bins', title:'What type of question?', ref:'до правила, с. 16',
+    task:'Sort the questions into four groups.',
+    cats:['General','Special','Alternative','Tag'],
+    items:[['Did you see the fireworks?',0],['Do they celebrate Easter?',0],['Is Halloween in October?',0],
+           ['Where did you meet the New Year?',1],['Who decorated the tree?',1],['What do children wear on Halloween?',1],
+           ['Do you like Christmas or Easter more?',2],['Is it green or red?',2],['Did they go to London or Paris?',2],
+           ['You made a resolution, didn’t you?',3],['It was fun, wasn’t it?',3],['She doesn’t like jokes, does she?',3]] },
+  { id:'l5e', kind:'grammar', type:'quiz', title:'Who came? Who did you see?', ref:'до правила, с. 16',
+    task:'Choose the correct question. Remember: no did when who or what is the subject.',
+    items:[
+      {q:'Who ___ the cake? — My mum baked it.', o:['baked','did bake','did baked']},
+      {q:'Who ___ at the party? — I saw Tom and Ann.', o:['did you see','you saw','saw you']},
+      {q:'What ___ at midnight? — The bells rang.', o:['happened','did happen','did it happen']},
+      {q:'What ___ for Christmas? — I got a new bike.', o:['did you get','you got','got you']},
+      {q:'Who ___ the Christmas tree? — My dad and I.', o:['decorated','did decorate','did decorated']},
+      {q:'Where ___ the New Year? — In Times Square.', o:['did they celebrate','they celebrated','celebrated they']},
+      {q:'Who ___ a joke on you? — My brother.', o:['played','did play','did played']},
+      {q:'When ___ to the USA? — Last winter.', o:['did your mother go','your mother went','went your mother']} ] },
+  { id:'l5f', kind:'grammar', type:'type', title:'Tag questions', ref:'до правила, с. 16',
+    task:'Complete the tag questions.',
+    items:[
+      'You went to the carnival, {didn’t you}?',
+      'Christmas is in December, {isn’t it}?',
+      'They don’t celebrate Halloween, {do they}?',
+      'She made a resolution, {didn’t she}?',
+      'We can watch the fireworks, {can’t we}?',
+      'He wasn’t at the party, {was he}?',
+      'Your friends like April Fool’s Day, {don’t they}?',
+      'It was a wonderful holiday, {wasn’t it}?' ] },
+  { id:'l5g', kind:'grammar', type:'order', title:'Build the question', ref:'до правила, с. 16',
+    task:'Put the words in the correct order.',
+    items:[
+      {w:['did','your family','celebrate','Easter','last year'], end:'?'},
+      {w:['what','do','people','wear','on St. Patrick’s Day'], end:'?'},
+      {w:['who','gave','you','this present'], end:'?'},
+      {w:['do','you','like','Christmas','or','New Year'], end:'?'},
+      {w:['they','went','to the parade',"didn't",'they'], end:'?'} ] },
+  { id:'l5h', kind:'grammar', type:'fix', title:'Questions: find the mistake', ref:'до правила, с. 16',
+    task:'There is one mistake in each question. Find it and correct it.',
+    items:[
+      {s:'Where did you celebrated the New Year?', w:'celebrated', o:['celebrate','celebrating','celebrates']},
+      {s:'Do your sister like Easter?', w:'Do', o:['Does','Is','Are']},
+      {s:'Is your family celebrate Christmas?', w:'Is', o:['Does','Are','Do']},
+      {s:'She likes Halloween, isn’t she?', w:'isn’t', o:['doesn’t','didn’t','wasn’t']},
+      {s:'What does children do on Halloween?', w:'does', o:['do','did','are']},
+      {s:'They went to Scotland, wasn’t they?', w:'wasn’t', o:['didn’t','weren’t','don’t']} ] }
+]},
+{ id:'l6', n:6, pages:'с. 19–22', title:'Nature', sub:'Природа. Лексика: пори року, погода, явища природи. Граматика: It is / was + прикметник, Present Simple для фактів.', hash:'1hy499x', ex:[
+  { id:'l6a', kind:'vocab', type:'bins', title:'Which season?', ref:'до впр. 1–4, с. 19–21',
+    task:'When does it usually happen? Sort the words into four seasons.',
+    cats:['Winter','Spring','Summer','Autumn'],
+    items:[['snowball fights',0],['a snowman',0],['sledging',0],['a thaw',0],
+           ['snowdrops',1],['buds on the trees',1],['warm May rains',1],['the end of the school year',1],
+           ['getting suntanned',2],['bathing in the sea',2],['ripe berries',2],['the summer holidays',2],
+           ['the harvest',3],['falling leaves',3],['golden trees',3],['cold long rains',3]] },
+  { id:'l6b', kind:'vocab', type:'slots', match:true, title:'Weather words', ref:'до впр. 1–4, с. 19–21',
+    task:'Match the descriptions with the weather words. There are two extra words.',
+    rows:[{pre:'It is very cold and there is ice on the windows.',a:'frosty'},{pre:'You can’t see far because the air is grey.',a:'foggy'},
+          {pre:'The snow melts and there is water everywhere.',a:'a thaw'},{pre:'A small pool of water in the street.',a:'a puddle'},
+          {pre:'A loud noise in the sky during a storm.',a:'thunder'},{pre:'A bright flash in the sky during a storm.',a:'lightning'},
+          {pre:'It is raining very, very heavily.',a:'pouring cats and dogs'},{pre:'There are a lot of grey clouds in the sky.',a:'cloudy'}],
+    extra:['sunny','windy'] },
+  { id:'l6c', kind:'vocab', type:'quiz', title:'Seasons quiz', ref:'до впр. 2–4, с. 19–21',
+    task:'Choose the right answer.',
+    items:[
+      {q:'Americans call autumn the ___.', o:['fall','harvest','rain']},
+      {q:'The first spring flowers are ___.', o:['snowdrops','sunflowers','roses']},
+      {q:'People often call early autumn “___ autumn”.', o:['golden','silver','green']},
+      {q:'In summer many families go to the ___ to bathe.', o:['seaside','forest','city']},
+      {q:'When the temperature is below zero, it is ___.', o:['frosty','hot','warm']},
+      {q:'The fruit and vegetables are the tastiest in ___.', o:['autumn','winter','spring']},
+      {q:'In winter you put on a sweater, gloves and an ___.', o:['anorak','umbrella','swimsuit']},
+      {q:'The ___ season comes after spring.', o:['summer','winter','autumn']} ] },
+  { id:'l6d', kind:'vocab', type:'type', title:'Sun → sunny', ref:'до правила, с. 19',
+    task:'Make adjectives from the nouns in brackets.',
+    items:[
+      'It is {sunny} (sun) and warm today.',
+      'Take an umbrella. It is {rainy} (rain).',
+      'It was very {windy} (wind) yesterday, my hat flew away.',
+      'In the morning it is often {foggy} (fog) in autumn.',
+      'The sky is {cloudy} (cloud), I can’t see the sun.',
+      'It is {snowy} (snow) in the mountains.',
+      'In January it is often {frosty} (frost).',
+      'There is a strong wind and big waves. It is {stormy} (storm) at sea.' ] },
+  { id:'l6e', kind:'grammar', type:'quiz', title:'Is, was or will be?', ref:'до правила, с. 19',
+    task:'Choose the correct form.',
+    items:[
+      {q:'It ___ frosty yesterday.', o:['was','is','will be']},
+      {q:'Look outside! It ___ sunny now.', o:['is','was','were']},
+      {q:'It ___ windy tomorrow, says the forecast.', o:['will be','was','is being']},
+      {q:'Last summer it ___ very hot.', o:['was','is','were']},
+      {q:'It ___ cold today, put on your gloves.', o:['is','was','be']},
+      {q:'The days ___ short in winter.', o:['are','is','was']},
+      {q:'Two days ago the streets ___ wet after the rain.', o:['were','was','are']},
+      {q:'What ___ the weather like yesterday?', o:['was','is','were']} ] },
+  { id:'l6f', kind:'grammar', type:'type', title:'Present Simple: nature facts', ref:'до впр. 1–4, с. 19–21',
+    task:'Put the verbs in brackets into the Present Simple.',
+    items:[
+      'Spring {comes} (come) after winter.',
+      'It often {rains} (rain) in autumn.',
+      'The snow {melts} (melt) at the end of winter.',
+      'The leaves {turn} (turn) red and brown in October.',
+      'It {seldom rains} (seldom / rain) in summer.',
+      'Children {don’t go|do not go} (not / go) out much in autumn.',
+      'The sun {warms} (warm) the water in the rivers and lakes.',
+      '{Does} it {snow} (snow) in September?' ] },
+  { id:'l6g', kind:'grammar', type:'order', title:'Weather: word order', ref:'до впр. 6, с. 22',
+    task:'Put the words in the correct order.',
+    items:[
+      {w:['what','is','the weather','like','today'], end:'?'},
+      {w:['it','is','often','foggy','in the mornings'], end:'.'},
+      {w:['in winter','we','usually','make','a snowman'], end:'.', alt:['we usually make a snowman in winter']},
+      {w:['it','was','very','windy','yesterday'], end:'.', alt:['yesterday it was very windy']},
+      {w:['my','favourite','season','is','summer'], end:'.'} ] }
+]},
+{ id:'l7', n:7, pages:'с. 23–26', title:'Travelling. Great Britain. Ukraine', sub:'Подорожі, Велика Британія, Україна. Лексика: транспорт, вокзал і аеропорт, сторони світу. Граматика: ступені порівняння, when … can.', hash:'7xg01e', ex:[
+  { id:'l7a', kind:'vocab', type:'slots', match:true, title:'At the station and airport', ref:'до впр. 4, с. 24',
+    task:'Match the definitions with the words. There are two extra words.',
+    rows:[{pre:'the bags and suitcases you take on a trip',a:'luggage'},{pre:'the price of a ticket',a:'fare'},
+          {pre:'the time when a train or plane leaves',a:'departure'},{pre:'the time when a train or plane comes',a:'arrival'},
+          {pre:'a board with times of buses, trains and planes',a:'timetable'},{pre:'officers check your bags there when you go abroad',a:'customs'},
+          {pre:'you show your passport there',a:'passport control'},{pre:'a place where you can ask questions',a:'information desk'}],
+    extra:['scenery','route'] },
+  { id:'l7b', kind:'vocab', type:'quiz', title:'Travel words', ref:'до впр. 1–4, с. 23–24',
+    task:'Choose the right word.',
+    items:[
+      {q:'I want to ___ two seats on the train to Lviv.', o:['book','cook','pay']},
+      {q:'We travelled ___ train.', o:['by','on','in']},
+      {q:'They walked to the lake ___ foot.', o:['on','by','with']},
+      {q:'You can sleep in a train ___.', o:['compartment','cabin bag','station']},
+      {q:'When you travel to another country, you travel ___.', o:['abroad','around','away']},
+      {q:'The ___ of a bus ticket is usually the lowest.', o:['fare','luggage','route']},
+      {q:'From the train window you can see wonderful ___.', o:['scenery','customs','timetable']},
+      {q:'A long bus for travelling between cities is a ___.', o:['coach','car','tram']} ] },
+  { id:'l7c', kind:'vocab', type:'slots', match:true, title:'The UK: capitals and people', ref:'до впр. 6, с. 25',
+    task:'Match the parts of the UK with their capitals and people. There are two extra words.',
+    rows:[{pre:'the capital of England and the UK',a:'London'},{pre:'the capital of Scotland',a:'Edinburgh'},
+          {pre:'the capital of Wales',a:'Cardiff'},{pre:'the capital of Northern Ireland',a:'Belfast'},
+          {pre:'people who live in England',a:'the English'},{pre:'people who live in Scotland',a:'the Scots'},
+          {pre:'people who live in Wales',a:'the Welsh'},{pre:'people who live in Northern Ireland',a:'the Irish'}],
+    extra:['Dublin','the Dutch'] },
+  { id:'l7d', kind:'vocab', type:'quiz', title:'The land of Great Britain', ref:'до впр. 6, с. 25',
+    task:'Read and choose the right answer.',
+    items:[
+      {q:'The UK has got ___ parts.', o:['four','three','five']},
+      {q:'The ___ separates the UK from Europe.', o:['English Channel','Irish Sea','North Sea']},
+      {q:'The North Sea washes the country in the ___.', o:['east','west','south']},
+      {q:'The Irish Sea separates Great Britain and ___.', o:['Ireland','France','Scotland']},
+      {q:'You can find the UK on the ___.', o:['British Isles','Canary Islands','Atlantic coast of America']},
+      {q:'“Great Britain”, “Britain” and “the UK” mean ___.', o:['the same country','different countries','only England']} ] },
+  { id:'l7e', kind:'vocab', type:'slots', match:true, title:'Compass points', ref:'до впр. 7, с. 26',
+    task:'Decode the letters.',
+    rows:[{pre:'N',a:'north'},{pre:'S',a:'south'},{pre:'E',a:'east'},{pre:'W',a:'west'},
+          {pre:'NE',a:'northeast'},{pre:'NW',a:'northwest'},{pre:'SE',a:'southeast'},{pre:'SW',a:'southwest'}] },
+  { id:'l7f', kind:'vocab', type:'quiz', title:'Where in Ukraine?', ref:'до впр. 8, с. 26',
+    task:'Choose the right part of Ukraine.',
+    items:[
+      {q:'You can find Lviv in the ___ of Ukraine.', o:['west','east','south']},
+      {q:'You can find Kharkiv in the ___ of Ukraine.', o:['east','west','south']},
+      {q:'You can find Odesa in the ___ of Ukraine.', o:['south','north','west']},
+      {q:'You can find Chernihiv in the ___ of Ukraine.', o:['north','south','west']},
+      {q:'You can find Uzhhorod in the ___ of Ukraine.', o:['west','east','north']},
+      {q:'You can find Zaporizhzhia in the ___ of Ukraine.', o:['southeast','northwest','west']} ] },
+  { id:'l7g', kind:'grammar', type:'quiz', title:'Cheap, cheaper, the cheapest', ref:'до впр. 1, 4, с. 23–24',
+    task:'Choose the correct form of the adjective.',
+    items:[
+      {q:'The fare of a bus ticket is usually the ___.', o:['lowest','lower','low']},
+      {q:'Plane tickets are the most ___.', o:['expensive','expensiver','more expensive']},
+      {q:'Travelling by plane is ___ than travelling by train.', o:['faster','fastest','more fast']},
+      {q:'Walking is the ___ way to travel.', o:['cheapest','cheaper','most cheap']},
+      {q:'A train is ___ comfortable than a bus.', o:['more','most','very']},
+      {q:'This is the ___ trip of my life!', o:['best','better','goodest']},
+      {q:'The weather in Scotland is ___ than in the south of England.', o:['worse','worst','badder']},
+      {q:'London is the ___ city in the UK.', o:['biggest','bigger','most big']} ] },
+  { id:'l7h', kind:'grammar', type:'order', title:'When you travel…', ref:'до впр. 2, с. 23',
+    task:'Put the words in the correct order.',
+    items:[
+      {w:['when','you','go','by car','you','can','stop','whenever','you','want'], end:'.'},
+      {w:['when','they','go','on foot','they','can','choose','a route','themselves'], end:'.'},
+      {w:['when','she','travels','by plane','she','can','visit','another country'], end:'.'},
+      {w:['when','we','go','by train','we','can','see','wonderful scenery'], end:'.'} ] }
+]},
+{ id:'l8', n:8, pages:'с. 27–29', title:'School Life', sub:'Шкільне життя. Лексика: дії на уроці, математика, комп’ютер. Граматика: Present Continuous, Past Simple, поради (Why don’t you…?).', hash:'gjyv7k', ex:[
+  { id:'l8a', kind:'vocab', type:'slots', match:true, title:'In the lesson', ref:'до впр. 1, 3, с. 27–28',
+    task:'Match the actions with the verbs. There are two extra verbs.',
+    rows:[{pre:'learn new words by heart',a:'memorise'},{pre:'say a poem from memory',a:'recite'},
+          {pre:'say it in another language',a:'translate'},{pre:'look at it again to find mistakes',a:'check'},
+          {pre:'15 × 12 = 180',a:'multiply'},{pre:'20 − 5 = 15',a:'subtract'},
+          {pre:'30 : 6 = 5',a:'divide'},{pre:'7 + 8 = 15',a:'add'}],
+    extra:['spell','copy'] },
+  { id:'l8b', kind:'vocab', type:'quiz', title:'Computer words', ref:'до впр. 4, с. 28–29',
+    task:'Choose the right word.',
+    items:[
+      {q:'You can ___ the words on your computer.', o:['type','paint','cook']},
+      {q:'Then you can ___ them out on paper.', o:['print','send','switch']},
+      {q:'To send an e-mail you must have ___ to the Internet.', o:['access','money','a pen']},
+      {q:'You can read a book in ___ form.', o:['digital','paper','short']},
+      {q:'You read the text on the ___ of the monitor.', o:['screen','keyboard','mouse']},
+      {q:'Before you watch a film, you ___ the computer on.', o:['switch','print','type']},
+      {q:'A computer ___ many things in our life.', o:['substituted','divided','memorised']} ] },
+  { id:'l8c', kind:'grammar', type:'type', title:'Present Continuous: what is happening now?', ref:'до впр. 2, с. 27–28',
+    task:'Put the verbs in brackets into the Present Continuous.',
+    items:[
+      'The teacher {is explaining} (explain) a new grammar rule.',
+      'The students {are reading} (read) the text.',
+      'The girls {aren’t singing|are not singing|aren\'t singing} (not / sing) now.',
+      'Look! Tom {is writing} (write) new words on the blackboard.',
+      'We {are doing} (do) a test right now.',
+      '{Are} the pupils {following} (follow) the teacher’s words?',
+      'I {am not playing|’m not playing|\'m not playing} (not / play) language games.',
+      'What {is} Ann {doing} (do) at the moment?' ] },
+  { id:'l8d', kind:'grammar', type:'quiz', title:'Present Simple or Continuous?', ref:'до впр. 2, с. 27–28',
+    task:'Choose the correct form.',
+    items:[
+      {q:'We usually ___ English three times a week.', o:['have','are having','has']},
+      {q:'Be quiet! The students ___ a test now.', o:['are writing','write','writes']},
+      {q:'Our teacher often ___ new words on the blackboard.', o:['writes','is writing','write']},
+      {q:'Look! Mark ___ the answer.', o:['is guessing','guesses','guess']},
+      {q:'I ___ my homework every evening.', o:['do','am doing','does']},
+      {q:'Listen! The girls ___ an English song.', o:['are singing','sing','sings']},
+      {q:'___ you often recite rhymes in class?', o:['Do','Are','Does']},
+      {q:'What ___ the teacher explaining now?', o:['is','does','do']} ] },
+  { id:'l8e', kind:'grammar', type:'type', title:'Past Simple: yesterday’s English lesson', ref:'до впр. 3, с. 28',
+    task:'Put the verbs in brackets into the Past Simple.',
+    items:[
+      'First we {checked} (check) our home assignment.',
+      'Then we {learnt|learned} (learn) new words.',
+      'After that we {read} (read) a new text.',
+      'The teacher {wrote} (write) sentences on the blackboard.',
+      'We {translated} (translate) them into Ukrainian.',
+      'Finally, we {recited} (recite) a new rhyme.',
+      'Susan {got} (get) an excellent mark.',
+      'She {didn’t remember|did not remember|didn\'t remember} (not / remember) her home assignment.' ] },
+  { id:'l8f', kind:'grammar', type:'slots', match:true, title:'Problems and suggestions', ref:'до впр. 5, с. 29',
+    task:'Match the problems with the suggestions.',
+    rows:[{pre:'I’m hungry.',a:'How about a sandwich?'},{pre:'I’m late for school.',a:'Why don’t you take a bus?'},
+          {pre:'I’ve got a bad cold.',a:'Why don’t you see a doctor?'},{pre:'I’m so tired after the test.',a:'Let’s have some rest.'},
+          {pre:'I’m thirsty.',a:'How about a glass of juice?'},{pre:'It’s too hot in the classroom.',a:'Let’s open the window.'},
+          {pre:'I don’t understand this rule.',a:'Why don’t you ask the teacher?'},{pre:'There’s a new film on today.',a:'Let’s go to the cinema.'}] },
+  { id:'l8g', kind:'grammar', type:'order', title:'Suggestions: word order', ref:'до впр. 5, с. 29',
+    task:'Put the words in the correct order.',
+    items:[
+      {w:['why',"don't",'you','go','by bus'], end:'?'},
+      {w:['how about','a cup of','tea'], end:'?'},
+      {w:["let's",'watch','cartoons','on TV'], end:'.'},
+      {w:['no,',"I'd rather",'talk','to my friend'], end:'.'},
+      {w:['what','did','you','do','in your Maths lesson'], end:'?'} ] }
+]},
+{ id:'l9', n:9, pages:'с. 30–31', title:'Family', sub:'Unit 1. Сім’я. Лексика: члени родини, стосунки в сім’ї. Граматика: запитання з Do / Does / Can, короткі відповіді.', hash:'r2oww5', ex:[
+  { id:'l9a', kind:'vocab', type:'slots', match:true, title:'Male and female', ref:'до впр. 2, с. 31',
+    task:'Match the pairs of words. There are two extra words.',
+    rows:[{pre:'uncle',a:'aunt'},{pre:'nephew',a:'niece'},{pre:'husband',a:'wife'},{pre:'father',a:'mother'},
+          {pre:'grandfather',a:'grandmother'},{pre:'son',a:'daughter'},{pre:'brother',a:'sister'},{pre:'grandson',a:'granddaughter'}],
+    extra:['cousin','parents'] },
+  { id:'l9b', kind:'vocab', type:'slots', match:true, title:'Who is who?', ref:'до впр. 3, с. 31',
+    task:'Who are these people for you? Match. There are two extra words.',
+    rows:[{pre:'your mother’s father',a:'grandfather'},{pre:'your father’s brother',a:'uncle'},
+          {pre:'your sister’s son',a:'nephew'},{pre:'your brother’s daughter',a:'niece'},
+          {pre:'your aunt’s daughter',a:'cousin'},{pre:'your mother’s sister',a:'aunt'},
+          {pre:'your father’s mother',a:'grandmother'},{pre:'your parents’ son',a:'brother'}],
+    extra:['husband','wife'] },
+  { id:'l9c', kind:'vocab', type:'bins', title:'A happy family?', ref:'до впр. 4, с. 31',
+    task:'What makes a family strong and what does not? Sort the phrases.',
+    cats:['Good for a family','Bad for a family'],
+    items:[['love each other',0],['share everything',0],['rely on each other',0],['support each other',0],
+           ['tell each other everything',0],['feel secure',0],['do anything for each other',0],
+           ['argue all the time',1],['be angry with each other',1],['envy each other',1],['shout at each other',1],['tell lies',1]] },
+  { id:'l9d', kind:'vocab', type:'quiz', title:'Family words', ref:'до впр. 1–4, с. 30–31',
+    task:'Choose the right word.',
+    items:[
+      {q:'My mother and father are my ___.', o:['parents','relatives','cousins']},
+      {q:'My uncle’s son is my ___.', o:['cousin','nephew','brother']},
+      {q:'My grandmother and grandfather are my ___.', o:['grandparents','parents','grandchildren']},
+      {q:'My aunt is my uncle’s ___.', o:['wife','sister','daughter']},
+      {q:'I can always ___ my best friend. He never lets me down.', o:['rely on','argue with','envy']},
+      {q:'My family members are the ___ people for me.', o:['dearest','cheapest','busiest']},
+      {q:'Aunts, uncles and cousins are my ___.', o:['relatives','parents','neighbours']} ] },
+  { id:'l9e', kind:'grammar', type:'quiz', title:'Do, does or can?', ref:'до впр. 6, с. 31',
+    task:'Choose the correct word.',
+    items:[
+      {q:'___ your parents love each other?', o:['Do','Does','Is']},
+      {q:'___ your aunt support you?', o:['Does','Do','Are']},
+      {q:'___ you rely on your brother? — Yes, I can.', o:['Can','Do','Does']},
+      {q:'___ your uncle live near you?', o:['Does','Do','Can']},
+      {q:'___ your relatives share everything with you?', o:['Do','Does','Is']},
+      {q:'___ your grandmother cook well? — Yes, she can.', o:['Can','Does','Do']},
+      {q:'___ your cousin often visit you?', o:['Does','Do','Is']},
+      {q:'___ your parents ever angry with each other?', o:['Are','Do','Does']} ] },
+  { id:'l9f', kind:'grammar', type:'type', title:'Short answers', ref:'до впр. 5–6, с. 31',
+    task:'Complete the short answers.',
+    items:[
+      'Do your parents share everything? — Yes, {they do}.',
+      'Does your aunt live in Kyiv? — No, {she doesn’t|she does not|she doesn\'t}.',
+      'Can you rely on your sister? — Yes, {I can}.',
+      'Does your uncle support you? — Yes, {he does}.',
+      'Do you argue with your brother? — No, {I don’t|I do not|I don\'t}.',
+      'Is Mariia your cousin? — Yes, {she is}.',
+      'Are your grandparents kind? — Yes, {they are}.',
+      'Can your nephew read? — No, {he can’t|he cannot|he can\'t}.' ] },
+  { id:'l9g', kind:'grammar', type:'order', title:'Family questions', ref:'до впр. 5–6, с. 31',
+    task:'Put the words in the correct order.',
+    items:[
+      {w:['who','is','Mariia'], end:'?'},
+      {w:['what','does','she','look like'], end:'?'},
+      {w:['does','your aunt','support','you'], end:'?'},
+      {w:['do','your relatives','tell','each other','everything'], end:'?'},
+      {w:['can','you','rely on','your parents'], end:'?'} ] }
+]},
+{ id:'l10', n:10, pages:'с. 32–33', title:'Ann’s Family. Prepositions', sub:'Unit 1. Родина Енн. Лексика: родичі, стосунки. Граматика: прийменники місця і руху.', hash:'jp171m', ex:[
+  { id:'l10a', kind:'vocab', type:'quiz', title:'Ann’s relatives', ref:'до впр. 1–2, с. 32–33',
+    task:'Read about Ann’s family again and choose the right answer.',
+    items:[
+      {q:'Kate is Ann’s ___.', o:['sister','cousin','aunt']},
+      {q:'Sam is Ann’s ___.', o:['brother','uncle','nephew']},
+      {q:'Polly is Ann’s ___.', o:['aunt','sister','cousin']},
+      {q:'Dan is Ann’s ___.', o:['uncle','brother','nephew']},
+      {q:'Bob is Ann’s ___.', o:['cousin','brother','uncle']},
+      {q:'Tom is Susan’s ___.', o:['husband','brother','son']},
+      {q:'Ann has got ___ cousins.', o:['two','three','four']},
+      {q:'Ann is happy because she has got a ___ family.', o:['big','small','new']} ] },
+  { id:'l10b', kind:'vocab', type:'slots', title:'Why is Ann lucky?', ref:'до впр. 1, 5, с. 32–33',
+    task:'Complete the text with the words from the box. There are two extra words.',
+    rows:[
+      {pre:'Ann’s family is very ', a:'close', post:'. They love each other very much.'},
+      {pre:'They ', a:'share', post:' everything and tell each other everything.'},
+      {pre:'They would do ', a:'anything', post:' for each other.'},
+      {pre:'It is important to have a family that you can ', a:'rely', post:' on.'},
+      {pre:'A good family will always ', a:'support', post:' you.'},
+      {pre:'A person with a strong family feels more ', a:'secure', post:'.'},
+      {pre:'Such a person can ', a:'deal', post:' with life better.'} ],
+    extra:['argue','envy'] },
+  { id:'l10c', kind:'vocab', type:'order', title:'A family photo', ref:'до впр. 7, с. 33',
+    task:'Put the words in the correct order to describe the photo.',
+    items:[
+      {w:['this','is','a picture','of my family','at a picnic'], end:'.'},
+      {w:['in the photo','you','can','see','my grandparents'], end:'.', alt:['you can see my grandparents in the photo']},
+      {w:['my dad','is','holding','a basket','full of sandwiches'], end:'.'},
+      {w:['everyone','looks','happy','and','relaxed'], end:'.'} ] },
+  { id:'l10d', kind:'grammar', type:'bins', title:'Place or movement?', ref:'до впр. 6, с. 33',
+    task:'Do the prepositions show where something is or where it goes? Sort them.',
+    cats:['Place (where?)','Movement (where to?)'],
+    items:[['in',0],['on',0],['at',0],['under',0],['above',0],['below',0],['next to',0],['between',0],
+           ['into',1],['onto',1],['across',1],['through',1],['from',1],['to',1],['along',1],['out of',1]] },
+  { id:'l10e', kind:'grammar', type:'quiz', title:'Prepositions of place', ref:'до впр. 6, с. 33',
+    task:'Choose the correct preposition.',
+    items:[
+      {q:'Let’s meet ___ the bus stop.', o:['at','in','on']},
+      {q:'My phone is ___ my bag.', o:['in','at','onto']},
+      {q:'The photo album is ___ the shelf.', o:['on','in','at']},
+      {q:'The cat is sleeping ___ the bed.', o:['under','into','across']},
+      {q:'There is a lamp ___ the table, near the ceiling.', o:['above','below','at']},
+      {q:'Our house is ___ the river.', o:['on','into','through']},
+      {q:'The village is ___ the sea level.', o:['below','into','onto']},
+      {q:'My grandma smiled ___ me.', o:['at','on','in']} ] },
+  { id:'l10f', kind:'grammar', type:'slots', title:'Prepositions of movement', ref:'до впр. 6, с. 33',
+    task:'Complete the sentences with the prepositions from the box. There are two extra words.',
+    rows:[
+      {pre:'The dog jumped ', a:'onto', post:' the sofa.'},
+      {pre:'Mum put the cake ', a:'into', post:' the oven.'},
+      {pre:'We swam ', a:'across', post:' the river to the other bank.'},
+      {pre:'The train went ', a:'through', post:' a long tunnel.'},
+      {pre:'I walk ', a:'from', post:' my house to school every day.'},
+      {pre:'The birds flew ', a:'over', post:' the house.'},
+      {pre:'Please pour some milk ', a:'into', post:' my cup.'} ],
+    extra:['at','under'] }
 ]}
 ];
 
@@ -717,6 +1127,7 @@ function frame(L, ex) {
 
 function render() {
   [...tabs.children].forEach((t, i) => t.setAttribute('aria-selected', String(i === cur.l)));
+  try { tabs.children[cur.l].scrollIntoView({block:'nearest', inline:'nearest'}); } catch (err) {}
   const L = LESSONS[cur.l];
   view.replaceChildren(cur.e < 0 ? menu(L, cur.l) : exercise(L, cur.l, cur.e));
 }
@@ -747,7 +1158,7 @@ full.onclick = () => { try { const p = document.fullscreenElement ? document.exi
 
 /* start: deep link (#l3 or #l3-2), else last position */
 (function start() {
-  const m = /^#(l\d)(?:-(\d+))?$/.exec(location.hash || '');
+  const m = /^#(l\d+)(?:-(\d+))?$/.exec(location.hash || '');
   let pos = store.get('e8-pos', { l: 0, e: -1 });
   if (m) { const l = LESSONS.findIndex(L => L.id === m[1]); if (l >= 0) pos = { l, e: m[2] ? +m[2] - 1 : -1 }; }
   if (!pos || !LESSONS[pos.l]) pos = { l: 0, e: -1 };
